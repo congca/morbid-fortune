@@ -1,6 +1,6 @@
 # morbid-fortune
 
-Prints fortunes based on DoT railroad casualties reports
+Tells fortunes based on DoT railroad casualties reports
 
 ## Usage
 
@@ -14,3 +14,6 @@ AS A RESULT OF A PASSENGER FATALITY  THIS EMPLOYEE WAS REQUESTED TO LOOK FOR HUM
 The data is quite messy (optional fields) so the output could just be wrong.
 I am using a dumb heuristic to get things that look like long form text (any
 field with more than eight characters)
+
+## Prerequisites
+Mac users need `gshuf` installed: `brew install coreutils`. 

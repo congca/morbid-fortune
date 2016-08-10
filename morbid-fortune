@@ -1,2 +1,14 @@
 #!/bin/bash
-awk -F',' '{ w=""; for(i=31;i<=NF;i++) { if(length($i) > 8){ w=w" "$i } } print w }' < wc-rail.txt | cut -b25- | sed 's/" "//g;s/"//g;/^$/d' | shuf -n1
+OS="`uname`" 
+case $OS in
+    'Linux')
+        SHUFFLE_CMD=shuf
+        SAY_CMD=espeak
+        ;;
+    'Darwin')
+        SHUFFLE_CMD=gshuf
+        SAY_CMD=say
+        ;;
+esac
+
+awk -F',' '{ w=""; for(i=31;i<=NF;i++) { if(length($i) > 8){ w=w" "$i } } print w }' < wc-rail.txt | cut -b25- | sed 's/" "//g;s/"//g;/^$/d' | $SHUFFLE_CMD -n1 | $SAY_CMD
